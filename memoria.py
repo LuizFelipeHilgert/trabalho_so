@@ -15,13 +15,6 @@ class Memoria:
         return -1
 
     def carregar_pagina(self, chave_pagina, dados_pagina):
-        """
-        Carrega uma página na memória principal.
-        chave_pagina: tupla (pid, numero_pagina)
-        dados_pagina: bytearray com os bytes dessa página extraídos da memória virtual
-
-        Retorna: (frame_index, pagina_removida_ou_None)
-        """
         livre = self.frame_livre()
 
         if livre != -1:
@@ -40,7 +33,7 @@ class Memoria:
         return frame_vitima, pagina_removida
 
     def ler_dado(self, frame_index, offset):
-        """Retorna o byte no offset dentro do frame informado."""
+        
         if self.dados_frames[frame_index] is None:
             return None
         return self.dados_frames[frame_index][offset]
